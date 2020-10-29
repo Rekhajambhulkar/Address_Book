@@ -113,7 +113,7 @@ public class AddressBook {
 		private void getUserChoice() {
 		boolean isTerminate = false;
 		while (!isTerminate) {
-			System.out.println("1:Adding new person \n" + "2:Print address book \n" + "3:Exit");
+			System.out.println("1:Adding new person \n" + "2:Print address book \n" + "Update the Person details \n" + "3:Exit");
 			int option = scanner.nextInt();
 			switch (option) {
 			case 1:
@@ -124,8 +124,10 @@ public class AddressBook {
 			case 2:
 				System.out.println(list);
 				break;
-
 			case 3:
+				book.updateContact();
+				break;
+			case 4:
 				isTerminate = true;
 				break;
 			default:
