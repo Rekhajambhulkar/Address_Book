@@ -6,9 +6,39 @@ public class AddressBook {
 	Scanner scanner = new Scanner(System.in);
 	static AddressBook2 book = new AddressBook2();
 
-	public static void main(String[] args) {
-		book.getUserChoice();
-	}
+	public void getUserChoice() {
+        boolean isTerminate = false;
+        while (!isTerminate) {
+            System.out.println("1: for adding new person \n" +
+                    "2: for update person \n" +
+                    "3: for print address book \n" +
+                    "4: For delete \n" +
+                    "5: For exit");
+            int option = scanner.nextInt();
+            switch (option)
+            {
+                case 1:
+                    Person person = addressBook.getUserInput();
+                    contactList.put(person.getEmailId(), person);
+                    break;
+                case 2:
+                    addressBook.updateContact();
+                    break;
+                case 3:
+                    System.out.println(contactList);
+                    break;
+                case 4:
+                    addressBook.deletePerson();
+                    break;
+                case 5:
+                    isTerminate = true;
+                    break;
+                default:
+                    System.out.println("please select valid option");
+                    break;
+            }
+        }
+    }
 
 	@Override
 	protected void finalize() throws Throwable {
@@ -121,33 +151,4 @@ public class AddressBook {
 		return person;
 	}
 
-		private void getUserChoice() {
-		boolean isTerminate = false;
-		while (!isTerminate) {
-			System.out.println("1:Adding new person \n" + "2:Print address book \n" + "3:Update the person details \n " + "4:Delete the person \n" + "5:Exit");
-			int option = scanner.nextInt();
-			switch (option) {
-			case 1:
-				Person person = book.getUserInput();
-				list.put(person.getEmailId(), person);
-				break;
-			case 2:
-				System.out.println(list);
-				break;
-			case 3:
-				book.updateContact();
-				break;
-			case 4:
-				book.deletePerson();
-                		break;
-			case 5:
-				isTerminate = true;
-				break;
-			default:
-				System.out.println("please select valid option");
-				break;
-			}
-		}
-
-	}
 }
