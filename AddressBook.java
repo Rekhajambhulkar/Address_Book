@@ -9,11 +9,12 @@ public class AddressBook {
 	public void getUserChoice() {
         boolean isTerminate = false;
         while (!isTerminate) {
-            System.out.println("1: for adding new person \n" +
-                    "2: for update person \n" +
-                    "3: for print address book \n" +
-                    "4: For delete \n" +
-                    "5: For exit");
+            System.out.println("1: Adding new person \n" +
+                    "2: Update person \n" +
+                    "3: Print address book \n" +
+                    "4: Delete \n" +
+		    "5: Search Person \n" +
+                    "6: Exit");
             int option = scanner.nextInt();
             switch (option)
             {
@@ -110,6 +111,24 @@ public class AddressBook {
 		}
 		list.remove(EmailId);
 		System.out.println("Deleted Successesfully.");
+	}
+
+	private void searchPerson(Object FirstName) {
+		System.out.println("Enter emailId to search");
+		String emailId = scanner.next();
+		Person person = contactList.get(emailId);
+ 
+		System.out.println("Enter First name");
+		String fName = scanner.next();
+		person.getfName();
+
+		if (!contactList.equals(fName)) {
+			System.out.println("Provided name is not duplicate");
+		} else {
+			System.out.println("Provided name is duplicate");
+
+		}
+		contactList.equals(FirstName);
 	}
 
 
