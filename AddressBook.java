@@ -14,7 +14,8 @@ public class AddressBook {
                     "3: Print address book \n" +
                     "4: Delete \n" +
 		    "5: Search CityOrState \n" +
-                    "6: Exit");
+                    "6: countCityOrState \n" +
+	            "7:	Exit");
             int option = scanner.nextInt();
             switch (option)
             {
@@ -35,6 +36,9 @@ public class AddressBook {
                     searchByCityOrState();
 		    break();
 		case 6:
+		    countCityOrState();
+		    break;
+		case 7:
 		    isTerminate = true;
                     break;
                 default:
@@ -116,8 +120,7 @@ public class AddressBook {
 		System.out.println("Deleted Successesfully.");
 	}
 
-		public void CountCityOrState() {
-		int count = 0;
+		public void searchCityOrState() {
 		System.out.println("Enter City:");
 		String City = scanner.next();
 		System.out.println("Enter State:");
@@ -126,12 +129,29 @@ public class AddressBook {
 		for (Person person : contactList.values()) {
 
 			if (person.getCity().contains(City) || person.getState().contains(State)) {
+			} else {
+				System.out.println("Records not found");
+			}
+		}
+
+	}
+
+		// Function for Count the number by city or state
+		public void countCityOrState() {
+		int count = 0;
+		System.out.println("Enter City:");
+		String City = scanner.next();
+		System.out.println("Enter State:");
+		String State = scanner.next();
+		System.out.println();
+		for (Person person : contactList.values()) {
+			if (person.getCity().contains(City) || person.getState().contains(State)) {
 				count = count + 1;
 			} else {
 				System.out.println("Records not found");
 			}
 		}
-		System.out.println("Number of count:"+count);
+		System.out.println("Number of count:" + count);
 	}
 
 
