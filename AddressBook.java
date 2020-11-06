@@ -4,8 +4,8 @@ public class AddressBook {
 	HashMap<String, Person> list = new HashMap<String, Person>();
 
 	Scanner scanner = new Scanner(System.in);
-	static AddressBook2 book = new AddressBook2();
 
+	//Function for get User choice
 	public void getUserChoice() {
         boolean isTerminate = false;
         while (!isTerminate) {
@@ -116,8 +116,7 @@ public class AddressBook {
 		System.out.println("Deleted Successesfully.");
 	}
 
-		public void CountCityOrState() {
-		int count = 0;
+		public void searchByCityOrState() {
 		System.out.println("Enter City:");
 		String City = scanner.next();
 		System.out.println("Enter State:");
@@ -131,7 +130,6 @@ public class AddressBook {
 				System.out.println("Records not found");
 			}
 		}
-		System.out.println("Number of count:"+count);
 	}
 
 
