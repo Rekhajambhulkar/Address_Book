@@ -13,7 +13,7 @@ public class AddressBook {
                     "2: Update person \n" +
                     "3: Print address book \n" +
                     "4: Delete \n" +
-		    "5: Search Person \n" +
+		    "5: Search CityOrState \n" +
                     "6: Exit");
             int option = scanner.nextInt();
             switch (option)
@@ -32,7 +32,10 @@ public class AddressBook {
                     addressBook.deletePerson();
                     break;
                 case 5:
-                    isTerminate = true;
+                    searchByCityOrState();
+		    break();
+		case 6:
+		    isTerminate = true;
                     break;
                 default:
                     System.out.println("please select valid option");
@@ -113,22 +116,22 @@ public class AddressBook {
 		System.out.println("Deleted Successesfully.");
 	}
 
-	private void searchPerson(Object FirstName) {
-		System.out.println("Enter emailId to search");
-		String emailId = scanner.next();
-		Person person = contactList.get(emailId);
- 
-		System.out.println("Enter First name");
-		String fName = scanner.next();
-		person.getfName();
+		public void CountCityOrState() {
+		int count = 0;
+		System.out.println("Enter City:");
+		String City = scanner.next();
+		System.out.println("Enter State:");
+		String State = scanner.next();
+		System.out.println();
+		for (Person person : contactList.values()) {
 
-		if (!contactList.equals(fName)) {
-			System.out.println("Provided name is not duplicate");
-		} else {
-			System.out.println("Provided name is duplicate");
-
+			if (person.getCity().contains(City) || person.getState().contains(State)) {
+				count = count + 1;
+			} else {
+				System.out.println("Records not found");
+			}
 		}
-		contactList.equals(FirstName);
+		System.out.println("Number of count:"+count);
 	}
 
 
