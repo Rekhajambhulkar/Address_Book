@@ -59,9 +59,18 @@ public class Person {
 		this.emailId = emailId;
 	}
 	
-	 @Override
+	@Override
 	public String toString() {
 		return "Person [FirstName=" + FirstName + ", LastName=" + LastName + ", Address=" + Address + ", City=" + City
 				+ ", State=" + State + ", ZIPCode=" + ZIPCode + ", MobileNo=" + MobileNo + ", emailId=" + emailId + "]";
 	    }
+
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof Person) {
+			Person person = (Person) obj;
+			return fName.equals(person.fName);
+		}
+		return false;
 	}
+}
