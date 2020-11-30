@@ -1,7 +1,7 @@
 package com.bridgelabz.addressbook;
 
 public class AddressBook {
-	HashMap<String, Person> list = new HashMap<String, Person>();
+	HashMap<String, Person> contactlist = new HashMap<String, Person>();
 
 	Scanner scanner = new Scanner(System.in);
 	static AddressBook2 book = new AddressBook2();
@@ -11,11 +11,9 @@ public class AddressBook {
         while (!isTerminate) {
             System.out.println("1: Adding new person \n" +
                     "2: Update person \n" +
-                    "3: Print address book \n" +
+		    "3: for print address book \n" +
                     "4: Delete \n" +
-		    "5: Search CityOrState \n" +
-                    "6: countCityOrState \n" +
-	            "7:	Exit");
+		    "5:	Exit");
             int option = scanner.nextInt();
             switch (option)
             {
@@ -32,13 +30,7 @@ public class AddressBook {
                 case 4:
                     addressBook.deletePerson();
                     break;
-                case 5:
-                    searchByCityOrState();
-		    break();
-		case 6:
-		    countCityOrState();
-		    break;
-		case 7:
+		case 5:
 		    isTerminate = true;
                     break;
                 default:
@@ -120,40 +112,23 @@ public class AddressBook {
 		System.out.println("Deleted Successesfully.");
 	}
 
-		public void searchCityOrState() {
-		System.out.println("Enter City:");
-		String City = scanner.next();
-		System.out.println("Enter State:");
-		String State = scanner.next();
-		System.out.println();
-		for (Person person : contactList.values()) {
-
-			if (person.getCity().contains(City) || person.getState().contains(State)) {
-			} else {
-				System.out.println("Records not found");
-			}
+		// Function for search the city or state
+		public void searchByCity(String city) {//Search by City
+			Map<String, String> person = contactList.values()//Dictionary of Person And City
+				.stream()
+				.filter(map -> map.getCity().contains(city))
+				.collect(Collectors.toMap(map -> map.getEmailId()+" ", map -> " "+map.getfName()+" "+map.getlName()+", City : "+map.getCity()));
+		System.out.println(person);
 		}
+	
+		public void searchByState(String state) { //Search by State
+			Map<String, String> personInState = contactList.values()//Dictionary of Person And State
+				.stream()
+				.filter(map -> map.getState().contains(state))
+				.collect(Collectors.toMap(map -> map.getEmailId()+" ", map -> " "+map.getfName()+" "+map.getlName()+", State : "+map.getState()));
 
-	}
-
-		// Function for Count the number by city or state
-		public void countCityOrState() {
-		int count = 0;
-		System.out.println("Enter City:");
-		String City = scanner.next();
-		System.out.println("Enter State:");
-		String State = scanner.next();
-		System.out.println();
-		for (Person person : contactList.values()) {
-			if (person.getCity().contains(City) || person.getState().contains(State)) {
-				count = count + 1;
-			} else {
-				System.out.println("Records not found");
-			}
+		System.out.println(personInState);
 		}
-		System.out.println("Number of count:" + count);
-	}
-
 
 		private Person getUserInput() {
 		System.out.print("Enter FirstName:");
@@ -192,5 +167,4 @@ public class AddressBook {
 		System.out.println(person);
 		return person;
 	}
-
 }
