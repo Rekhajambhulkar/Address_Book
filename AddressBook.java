@@ -144,6 +144,15 @@ public class AddressBook {
 			return count;
 		}
 
+		public void sortByName() { //Sorts Alphabetically by first Name
+			
+			java.util.List<Person> sortedList = contactList.values()
+												.stream()
+												.sorted(Comparator.comparing(Person::getfName))
+												.collect(Collectors.toList());
+			System.out.println(sortedList);
+		}
+
 		private Person getUserInput() {
 		System.out.print("Enter FirstName:");
 		String FirstName = scanner.next();

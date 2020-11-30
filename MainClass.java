@@ -85,4 +85,11 @@ public class MainClass {
 			break;
 		}
 	}
+
+	private static void sort() { // Sorts Alphabetically by First Name
+
+		System.out.println("\nSorted List of Contacts Alphabetically by Name :\n");
+		familyAddressBook.sortByName();
+		friendsAddressBook.sortByName();
+	}
 }
