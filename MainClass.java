@@ -86,10 +86,44 @@ public class MainClass {
 		}
 	}
 
-	private static void sort() { // Sorts Alphabetically by First Name
+	private static void sort() { // Sorting
 
-		System.out.println("\nSorted List of Contacts Alphabetically by Name :\n");
-		familyAddressBook.sortByName();
-		friendsAddressBook.sortByName();
+		System.out.println("\n1: Sort by First Name\n2: Sort by City\n3: Sort by State\n4: Sort by ZIP\n");
+		int sortOption = scanner.nextInt();
+
+		boolean ifNotSorted = false;
+		while (!ifNotSorted) {
+			switch (sortOption) {
+
+			case 1: // Sorts by First Name
+				System.out.println("\nSorted List of Contacts by First Name\n");
+				familyAddressBook.sortByName();
+				friendsAddressBook.sortByName();
+				ifNotSorted = true;
+				break;
+			case 2: // Sorts by City
+				System.out.println("\nSorted List of Contacts by City\n");
+				familyAddressBook.sortByCity();
+				friendsAddressBook.sortByCity();
+				ifNotSorted = true;
+				break;
+			case 3: // Sorts by State
+				System.out.println("\nSorted List of Contacts by State\n");
+				familyAddressBook.sortByState();
+				friendsAddressBook.sortByState();
+				ifNotSorted = true;
+				break;
+			case 4: // Sorts by ZIP
+				System.out.println("\nSorted List of Contacts by ZIP\n");
+				familyAddressBook.sortByZip();
+				friendsAddressBook.sortByZip();
+				ifNotSorted = true;
+				break;
+			default:
+				System.out.println("Enter Correct Option\n");
+				sortOption = scanner.nextInt();
+				break;
+			}
+		}
 	}
 }

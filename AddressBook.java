@@ -145,13 +145,40 @@ public class AddressBook {
 		}
 
 		public void sortByName() { //Sorts Alphabetically by first Name
-			
+
 			java.util.List<Person> sortedList = contactList.values()
-												.stream()
-												.sorted(Comparator.comparing(Person::getfName))
-												.collect(Collectors.toList());
+					.stream()
+					.sorted(Comparator.comparing(Person::getfName))
+					.collect(Collectors.toList());
 			System.out.println(sortedList);
 		}
+
+		public void sortByCity() { //Sorts Alphabetically by City
+			java.util.List<Person> sortedList = contactList.values()
+												.stream()
+												.sorted(Comparator.comparing(Person::getCity))
+												.collect(Collectors.toList());
+			System.out.println(sortedList);	
+		}
+
+		public void sortByState() { //Sorts Alphabetically by State
+			java.util.List<Person> sortedList = contactList.values()
+												.stream()
+												.sorted(Comparator.comparing(Person::getState))
+												.collect(Collectors.toList());
+			System.out.println(sortedList);	
+			
+		}
+
+		public void sortByZip() { //Sorts Alphabetically by ZIP
+			java.util.List<Person> sortedList = contactList.values()
+												.stream()
+												.sorted(Comparator.comparing(Person::getZip))
+												.collect(Collectors.toList());
+			System.out.println(sortedList);			
+		}
+	
+
 
 		private Person getUserInput() {
 		System.out.print("Enter FirstName:");
