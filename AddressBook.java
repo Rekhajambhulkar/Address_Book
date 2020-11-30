@@ -130,6 +130,20 @@ public class AddressBook {
 		System.out.println(personInState);
 		}
 
+		// Function for Count the number by city or state
+		public Long countByCity(String countCityContacts) { // Counts no of Contacts in City
+			Long count = contactList.values().stream().filter(map -> map.getCity().contains(countCityContacts))
+					.collect(Collectors.counting());
+			return count;
+		}
+
+		public Long countByState(String countStateContacts) { // Counts no of Contacts in State
+
+			Long count = contactList.values().stream().filter(map -> map.getState().contains(countStateContacts))
+					.collect(Collectors.counting());
+			return count;
+		}
+
 		private Person getUserInput() {
 		System.out.print("Enter FirstName:");
 		String FirstName = scanner.next();

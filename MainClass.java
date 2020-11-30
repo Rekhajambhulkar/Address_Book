@@ -48,7 +48,7 @@ public class MainClass {
 	}
 
 	private static void search() {
-		System.out.println("\n1.Search by City\n2.Search by State");
+		System.out.println("\n1.Search by City\n2.Search by State\n3.Count by City\\n4.Count by State");
 		int search = scanner.nextInt();
 		switch (search) {
 
@@ -66,6 +66,20 @@ public class MainClass {
 			familyAddressBook.searchByState(state);
 			friendsAddressBook.searchByState(state);
 			break;
+		case 3:
+		    	System.out.print("Enter City : ");
+		    	String CityToCountContacts = scanner.next();
+		    	Long noOfFamilyContactsInCity = familyAddressBook.countByCity(CityToCountContacts);
+		    	Long noOfFriendsContactsInCity = friendsAddressBook.countByCity(CityToCountContacts);
+		    	System.out.println("\nNo of Contacts in "+CityToCountContacts+" are "+(noOfFamilyContactsInCity+noOfFriendsContactsInCity));
+		    	break;
+		case 4:
+		    	System.out.print("Enter State : ");
+		    	String StateToCountContacts = scanner.next();
+		    	Long noOfFamilyContactsInState = familyAddressBook.countByState(StateToCountContacts);
+		    	Long noOfFriendsContactsIntate = friendsAddressBook.countByState(StateToCountContacts);
+		    	System.out.println("\nNo of Contacts in "+StateToCountContacts+" are "+(noOfFamilyContactsInState+noOfFriendsContactsIntate));
+		    	break;
 		default:
 			System.out.println("\nInvalid Entry\n");
 			break;
